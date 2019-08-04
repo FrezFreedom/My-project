@@ -24,12 +24,18 @@
     <ClCompile Include="ConvertorFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="OutputFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputFunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ConverterFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputFunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

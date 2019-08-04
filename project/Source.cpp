@@ -2,6 +2,7 @@
 #include <limits.h> 
 #include <string.h>
 #include "InputFunctions.h"
+#include "OutputFunctions.h"
 #include <queue>
 #include <map>
 #include <ctime>
@@ -51,5 +52,11 @@ int main(){
 		, &upper_bound_number_of_max_delay, &max_of_bandwidth, &fat_tree_size, fat_tree, &index_map_reverse
 		, &index_map, sg_network, sg_security, sg_max_delay);
 
+	printMatrixDouble(fat_tree,fat_tree_size,fat_tree_size);
+	printMatrixDouble(sg_max_delay, network_size, network_size);
+	printMatrixDouble(sg_network,network_size,network_size);
+	printMatrixDouble(sg_security, network_size, network_size);
+
+	int foo; cin >> foo;
 	return 0;
 }

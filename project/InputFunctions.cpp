@@ -5,8 +5,8 @@
 #include <map>
 
 void fatTreeRead(string nameOfFatTree, int * network_size, double * upper_bound_of_performance, double * upper_bound_number_of_security
-	, double * upper_bound_number_of_max_delay, double * max_of_bandwidth, int * fat_tree_size, double ** fat_tree, map<int, int> * index_map_reverse
-	, map<int, int> * index_map, double ** sg_network, double ** sg_security, double ** sg_max_delay){
+	, double * upper_bound_number_of_max_delay, double * max_of_bandwidth, int * fat_tree_size, double ** & fat_tree, map<int, int> * index_map_reverse
+	, map<int, int> * index_map, double ** & sg_network, double ** & sg_security, double ** & sg_max_delay){
 
 	ifstream myReadFile;
 	myReadFile.open(nameOfFatTree);
@@ -83,7 +83,7 @@ void fatTreeRead(string nameOfFatTree, int * network_size, double * upper_bound_
 			foo = stod(help_to_read);
 			//cout<<"perfomance";
 			fat_tree[index][index] = foo;
-			network_size++;
+			(*network_size)++;
 		}
 	}
 
@@ -112,6 +112,14 @@ void fatTreeRead(string nameOfFatTree, int * network_size, double * upper_bound_
 		//sg_max_delay[i] = new int[network_size];
 
 	}
+	for (int i = 0; i < (*network_size); ++i)
+	{
+		for (int j = 0; j < (*network_size); j++)
+		{
+			sg_network[i][j] = sg_security[i][j] = 0;
+		}
+	}
+
 	for (int i = 0; i < (*fat_tree_size); ++i)
 	{
 		sg_max_delay[i] = new double[(*fat_tree_size)];
@@ -124,9 +132,9 @@ void fatTreeRead(string nameOfFatTree, int * network_size, double * upper_bound_
 	myReadFile >> help_to_read;
 	just_for_fun = str_to_int(help_to_read);
 
-	for (int i = 0; i < (*fat_tree_size); ++i)
+	for (int i = 0; i < just_for_fun; ++i)
 	{
-		for (int j = 0; j < (*fat_tree_size); ++j)
+		for (int j = 0; j < just_for_fun; ++j)
 		{
 			myReadFile >> help_to_read;
 			sg_max_delay[i][j] = stod(help_to_read);

@@ -80,6 +80,7 @@
   <ItemGroup>
     <ClCompile Include="ConvertorFunctions.cpp" />
     <ClCompile Include="InputFunctions.cpp" />
+    <ClCompile Include="OutputFunctions.cpp" />
     <ClCompile Include="Source.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\Frez\Desktop\eigen-eigen-b9cd8366d4e8;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -87,6 +88,7 @@
   <ItemGroup>
     <ClInclude Include="ConverterFunctions.h" />
     <ClInclude Include="InputFunctions.h" />
+    <ClInclude Include="OutputFunctions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
