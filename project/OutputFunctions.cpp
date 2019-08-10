@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "OutputFunctions.h"
 
 using namespace std;
@@ -15,4 +16,13 @@ void printMatrixDouble(double ** matrix, int row, int col){
 		cout << "\n";
 	}
 	cout << "------------------------------------\n";
+}
+
+void printVector(vector<int> & V){
+	cout << "++++++++++++++++++++++++++++++++++++\n";
+	for (int i = 0; i < (int)V.size(); i++)
+	{
+		cout << V[i] << " ";
+	}
+	cout << "\n------------------------------------\n";
 }

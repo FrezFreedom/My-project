@@ -153,3 +153,16 @@ void fatTreeRead(string nameOfFatTree, int * network_size, double * upper_bound_
 		sg_security[i][i] = security_help[i];
 	}
 }
+
+void testCasesPermutationRead(string nameOfTestcases, int * number_of_queries, vector<int> &queries){
+	ifstream testcase_reader;
+	testcase_reader.open("random_testcases.txt");
+	string help_to_read;
+	testcase_reader >> help_to_read;
+	(*number_of_queries) = str_to_int(help_to_read);
+	for (int i = 0; i < (*number_of_queries); ++i)
+	{
+		testcase_reader >> help_to_read;
+		queries.push_back(str_to_int(help_to_read));
+	}
+}

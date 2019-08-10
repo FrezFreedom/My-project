@@ -33,6 +33,7 @@ double alpha, beta;
 int network_size;
 int query_size;
 int fat_tree_size;
+int number_of_queries;
 double ** sg_network, **sg_security, **sg_max_delay;
 double ** fg_network, **fg_security, **fg_max_delay;
 double ** fat_tree;
@@ -41,6 +42,7 @@ double ** fat_tree_copy;
 
 map<int, int> index_map;
 map<int, int> index_map_reverse;
+vector<int> queries;
 vector< pair< pair<int, int>, double > > fat_tree_recover;
 vector< pair< pair<int, int>, double > > sg_network_recover;
 
@@ -56,6 +58,12 @@ int main(){
 	printMatrixDouble(sg_max_delay, network_size, network_size);
 	printMatrixDouble(sg_network,network_size,network_size);
 	printMatrixDouble(sg_security, network_size, network_size);
+
+	string nameOfTestcases = "random_testcases.txt";
+
+	testCasesPermutationRead(nameOfTestcases, &number_of_queries, queries);
+
+	printVector(queries);
 
 	int foo; cin >> foo;
 	return 0;
