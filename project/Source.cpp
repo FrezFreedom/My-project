@@ -22,6 +22,7 @@ double** security;
 double duration1;
 int** help;
 int N;
+int type;
 
 double upper_bound_of_performance;
 double upper_bound_number_of_security;
@@ -49,6 +50,7 @@ vector< pair< pair<int, int>, double > > sg_network_recover;
 int main(){
 
 	string nameOfFatTree = "testcase.txt";
+	type = 1;
 
 	fatTreeRead(nameOfFatTree,& network_size, &upper_bound_of_performance, &upper_bound_number_of_security
 		, &upper_bound_number_of_max_delay, &max_of_bandwidth, &fat_tree_size, fat_tree, &index_map_reverse
@@ -70,11 +72,29 @@ int main(){
 
 	for (int i = 0; i < number_of_queries; i++)
 	{
-		forwardingGraphRead(queries[i],network_size, &query_size, fg_network, fg_security, fg_max_delay);
+		int possible = forwardingGraphRead(queries[i],network_size, &query_size, fg_network, fg_security, fg_max_delay);
 		printMatrixDouble(fg_network, network_size, network_size);
 		printMatrixDouble(fg_security, network_size, network_size);
 		printMatrixDouble(fg_max_delay, network_size, network_size);
-		int foo; cin >> foo;
+		if (possible == -1){
+			cout << "We don't have enough node for processes!\n";
+		}
+		else{
+			if (type == 1){
+				double its_time = 0;// run_it();
+				if (its_time != -1){
+					accepted_queries++;
+					time += its_time;
+				}
+			}
+			else{
+
+			}
+		}
+
+		cout << " " << accepted_queries << " / " << number_of_queries << "\t";
+		cout << duration1 << "\t";
+
 	}
 
 	int foo; cin >> foo;
