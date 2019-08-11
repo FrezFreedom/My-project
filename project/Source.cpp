@@ -64,6 +64,18 @@ int main(){
 	testCasesPermutationRead(nameOfTestcases, &number_of_queries, queries);
 
 	printVector(queries);
+	
+	double time = 0;
+	int accepted_queries = 0;
+
+	for (int i = 0; i < number_of_queries; i++)
+	{
+		forwardingGraphRead(queries[i],network_size, &query_size, fg_network, fg_security, fg_max_delay);
+		printMatrixDouble(fg_network, network_size, network_size);
+		printMatrixDouble(fg_security, network_size, network_size);
+		printMatrixDouble(fg_max_delay, network_size, network_size);
+		int foo; cin >> foo;
+	}
 
 	int foo; cin >> foo;
 	return 0;

@@ -166,3 +166,64 @@ void testCasesPermutationRead(string nameOfTestcases, int * number_of_queries, v
 		queries.push_back(str_to_int(help_to_read));
 	}
 }
+
+int forwardingGraphRead(int which_query, int network_size, int * query_size, double ** & fg_network, double ** & fg_security, double ** & fg_max_delay){
+	//cin >> which_query;
+	ifstream myFG;
+	string help_to_read;
+	string which_forwardingGraph = "testcase_" + to_string(which_query) + ".txt";
+	myFG.open(which_forwardingGraph);
+	
+	fg_network = new double*[network_size];
+	fg_security = new double*[network_size];
+	fg_max_delay = new double*[network_size];
+	for (int i = 0; i < network_size; ++i)
+	{
+		fg_network[i] = new double[network_size];
+		fg_security[i] = new double[network_size];
+		fg_max_delay[i] = new double[network_size];
+	}
+	for (int i = 0; i < network_size; i++)
+	{
+		for (int j = 0; j < network_size; j++)
+		{
+			fg_network[i][j] = fg_security[i][j] = fg_max_delay[i][j] = 0;
+		}
+	}
+	myFG >> help_to_read;
+	(*query_size) = str_to_int(help_to_read);
+	if ((*query_size)>network_size){
+		//cout << "We don't have enough node for processes!" << endl;
+		return -1;
+	}
+	for (int i = 0; i < (*query_size); ++i)
+	{
+		for (int j = 0; j < (*query_size); ++j)
+		{
+			myFG >> help_to_read;
+			fg_network[i][j] = stod(help_to_read);
+		}
+	}
+	myFG >> help_to_read;
+	(*query_size) = str_to_int(help_to_read);
+	for (int i = 0; i < (*query_size); ++i)
+	{
+		for (int j = 0; j < (*query_size); ++j)
+		{
+			myFG >> help_to_read;
+			fg_security[i][j] = stod(help_to_read);
+		}
+	}
+	myFG >> help_to_read;
+	(*query_size) = str_to_int(help_to_read);
+	for (int i = 0; i < (*query_size); ++i)
+	{
+		for (int j = 0; j < (*query_size); ++j)
+		{
+			myFG >> help_to_read;
+			fg_max_delay[i][j] = stod(help_to_read);
+		}
+	}
+	myFG.close();
+	return +1;
+}

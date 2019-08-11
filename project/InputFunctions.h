@@ -10,3 +10,5 @@ void fatTreeRead(string nameOfFatTree, int * network_size, double * upper_bound_
 	, map<int, int> * index_map, double ** & sg_network, double ** & sg_security, double ** & sg_max_delay);
 
 void testCasesPermutationRead(string nameOfTestcases, int * number_of_queries, vector<int> & queries);
+
+int forwardingGraphRead(int which_query, int network_size, int * query_size, double ** & fg_network, double ** & fg_security, double ** & fg_max_delay);
