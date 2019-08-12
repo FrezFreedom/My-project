@@ -55,3 +55,23 @@ double dijkstra(double ** graph, int size, int src, int dst){
 	}
 	return 0;
 }
+
+MatrixXd eigenDecomposition(MatrixXd A, MatrixXd B)
+{
+	EigenSolver<MatrixXd> es(A);
+	MatrixXcd SubstrateEigenVectors = es.eigenvectors();
+	//cout << SubstrateEigenVectors << "\n\n";
+
+	EigenSolver<MatrixXd> es1(B);
+	MatrixXcd FgEigenVectors = es1.eigenvectors();
+	//cout << FgEigenVectors << "\n\n";
+
+	MatrixXd tmpSgEigenVector = SubstrateEigenVectors.real();
+	tmpSgEigenVector = tmpSgEigenVector.cwiseAbs();
+
+	MatrixXd tmpFgEigenVector = FgEigenVectors.real();
+	tmpFgEigenVector = tmpFgEigenVector.cwiseAbs();
+
+	MatrixXd result = tmpFgEigenVector * tmpSgEigenVector.transpose();
+	return result;
+}
